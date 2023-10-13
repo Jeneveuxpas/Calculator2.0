@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+	<style>
+	::-webkit-scrollbar {
+		width: 5px;
+		height: 5px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: transparent;
+	}
+
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	</style>
+</head>
+<body>
+    <div class="calculator">
+		<textarea id="display" class="no-scroll" onkeydown="check()"></textarea>
+        <input type="text" id="display2" readonly >
+        <div class="buttons">
+			<button onclick="switchToRad()">rad</button>
+			<button onclick="switchToDeg()">deg</button>
+			<button onclick="appendToDisplay('(')">(</button>
+			<button onclick="appendToDisplay(')')">)</button>
+			<button onclick="appendToDisplay('%')">%</button>
+			<button class = "ac" onclick="clearDisplay()">AC</button>
+			<button onclick="delToDisplay()">del</button>
+			<br>
+			<button onclick="appendToDisplay('sin(')">sin</button>		
+			<button onclick="appendToDisplay('cos(')">cos</button>
+			<button onclick="appendToDisplay('tan(')">tan</button>
+			<button class="number" onclick="appendToDisplay('7')">7</button>
+			<button class="number" onclick="appendToDisplay('8')">8</button>
+			<button class="number" onclick="appendToDisplay('9')">9</button>
+			<button onclick="appendToDisplay('/')">÷</button>
+			<br>	
+			<button onclick="appendToDisplay('!')">x!</button>
+			<button onclick="appendToDisplay('pi')">π</button>
+			<button onclick="appendToDisplay('lg(')">lg</button>
+			<button class="number" onclick="appendToDisplay('4')">4</button>
+			<button class="number" onclick="appendToDisplay('5')">5</button>
+			<button class="number" onclick="appendToDisplay('6')">6</button>
+			<button onclick="appendToDisplay('*')">×</button>
+			<br>
+			<button onclick="appendToDisplay('e')">e</button>
+			<button onclick="appendToDisplay('ln(')">ln</button>
+			<button onclick="appendToDisplay('sqrt(')">sqrt</button>
+			<button class="number" onclick="appendToDisplay('1')">1</button>
+			<button class="number" onclick="appendToDisplay('2')">2</button>
+			<button class="number" onclick="appendToDisplay('3')">3</button>
+			<button onclick="appendToDisplay('-')">-</button>
+			<br>
+			<button onclick="send_clear()">exp</button>
+			<button onclick="get_message()">ans</button>
+			<button onclick="appendToDisplay('^')">^</button>
+			<button class="number" onclick="appendToDisplay('0')">0</button>
+			<button class="number" onclick="appendToDisplay('.')">.</button>
+			<button class="equal" onclick="calculateResult()">=</button>
+			<button onclick="appendToDisplay('+')">+</button>
+		</div>
+    </div>
+
+	<div id="tax-calculator" style="display: none;">
+        <h1 class="calculator-title">税率计算器</h1>
+		<div class="choice_buttons">
+			<button onclick="current()">活期</button>
+			<button onclick="limit()">定期</button>
+			<button onclick="loan()">贷款</button>
+		</div>
+		<div class="input-fields">
+			<label for="income">金额:</label>
+			<input type="rad_text" id="money"placeholder="元"onkeyup="check_money()">
+			<br>
+			<label for="tax-rate">时长:</label>
+			<input type="rad_text" id="time" placeholder="月"onkeyup="check_time()">
+			<br>
+			<label for="tax-rate">利息:</label>
+			<input type="rad_text" id="income" readonly >
+		</div>
+    	<button id="calculate-tax" onclick="calculateTax()">计算税率</button>
+		<div class="change_buttons">
+			<button onclick="switchToDeg()">deg</button>
+			<button onclick="switchToChangeRad()">修改利率</button>
+		</div>
+    </div>
+
+	<div id="change-tax-calculator" style="display: none;">
+		<h1 class="calculator-title">税率计算器</h1>
+		<div class="choice_buttons">
+			<button onclick="current()">活期</button>
+			<button onclick="limit()">定期</button>
+			<button onclick="loan()">贷款</button>
+		</div>
+		<div class="input-fields">
+			<label for="income">利率:</label>
+			<input type="rad_text" id="tax_rate"placeholder="厘"onkeyup="check_rate()">
+			<br>
+			<label for="tax-rate">时长:</label>
+			<input type="rad_text" id="tax_time" placeholder="月"onkeyup="check_month()">
+		</div>
+    	<button id="calculate-tax" onclick="changeTax()">确认修改</button>
+		<div class="change_buttons">
+			<button onclick="switchToDeg()">deg</button>
+			<button onclick="switchToRad()">计算利率</button>
+		</div>
+	</div>
+
+	<style>
+
+		input::-webkit-input-placeholder {
+			/* placeholder颜色 */
+			color: #aab2bd;
+			/* placeholder字体大小 */
+			font-size: 16px;
+		}
+	</style>
+    <script src="calculator.js"></script>
+</body>
+</html>
